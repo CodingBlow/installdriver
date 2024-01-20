@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Installation Error</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        background-color: #dee8ef;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        color: #fff;
+      }
+
+      header img {
+        max-height: 40px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+      }
+
+      .error-container {
+        text-align: center;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .error-symbol {
+        font-size: 50px;
+        color: #ff4500; /* Red color for error symbol */
+      }
+
+      .bold-text {
+        font-weight: bold;
+      }
+
+      .warning-message {
+        color: #ff4500; /* Red color for warning message */
+        margin-top: 10px;
+      }
+
+      .chat-now-button {
+        background-color: #ff0000; /* Red color for the button */
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+      }
+
+      .important-note {
+        color: #555;
+        margin-top: 20px;
+      }
+      #loader {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+        z-index: 999;
+      }
+
+      .loading-text {
+        font-size: 20px;
+        font-weight: bold;
+        color: #333;
+      }
+
+      body.loading {
+        overflow: hidden;
+      }
+
+      body.loaded {
+        overflow: auto;
+      }
+
+      main,
+      footer {
+        filter: blur(0); /* Remove blur effect once loaded */
+        transition: filter 0.5s ease; /* Smooth transition for the blur effect */
+      }
+
+      body.loading main,
+      body.loading footer {
+        filter: blur(5px); /* Apply blur effect while loading */
+      }
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+      }
+    </style>
+  </head>
+
+  <body class="loading">
+    <div id="loader">
+      <span class="loading-text">Downloading...</span>
+    </div>
+    <header>
+      <img src="/images/canonlogo.png" alt="Company Logo" />
+    </header>
+
+    <main>
+      <div class="error-container">
+        <span class="error-symbol">&#9888;</span>
+        <h2>Printer Driver Installation Failed</h2>
+        <p>Installation has been failed due to a fatal error:</p>
+        <p class="bold-text" id="fatal-error-message"></p>
+        <p class="bold-text">Please contact Canon support for assistance.</p>
+        <a class="chat-now-button" href="#">Chat Now</a>
+        <br />
+        <br />
+        <p class="warning-message">
+          Warning: Verify the printer model details, phone number, etc., that
+          you filled in on the previous page!
+        </p>
+      </div>
+    </main>
+
+    <footer>&copy; Canon 2024. All Rights Reserved.</footer>
+
+    <script>
+      const errorMessages = [
+        "C0000043",
+        "FH67JGFD55",
+        "RTY789090",
+        "56YUJHHB66",
+      ];
+      const randomErrorMessage =
+        errorMessages[Math.floor(Math.random() * errorMessages.length)];
+
+      document.getElementById(
+        "fatal-error-message"
+      ).innerText = `"${randomErrorMessage}"`;
+
+      // Simulate loading delay (2 seconds in this example)
+      setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+        document.body.classList.remove("loading");
+        document.body.classList.add("loaded");
+        document.querySelector("main").style.display = "block";
+        document.querySelector("footer").style.display = "block";
+      }, 2000);
+    </script>
+  </body>
+</html>

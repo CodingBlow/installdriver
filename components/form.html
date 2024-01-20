@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Printer Setup</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f8f8f8;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        background-color: #dee7ed;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        color: #fff;
+      }
+
+      header img {
+        max-height: 60px; /* Increased company logo size */
+      }
+
+      main {
+        display: flex;
+        justify-content: space-between;
+        padding: 20px;
+        flex-grow: 1;
+      }
+
+      form {
+        flex-basis: calc(50% - 10px); /* Adjusted form width */
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      form label {
+        display: block;
+        margin-bottom: 8px;
+        color: #333;
+        font-weight: bold; /* Increased font weight for input labels */
+      }
+
+      form input[type="text"],
+      form input[type="email"],
+      form input[type="tel"] {
+        width: calc(100% - 20px);
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 2px solid #3498db; /* Updated border style */
+        border-radius: 4px;
+        box-sizing: border-box;
+      }
+
+      form button {
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .printer-container {
+        flex-basis: calc(
+          50% - 10px
+        ); /* Adjusted printer image container width */
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 10px;
+      }
+
+      .printer-container img.printer-icon {
+        display: block;
+        max-height: 500px; /* Increased printer image size */
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+      }
+
+      #loader {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border: 8px solid #f3f3f3;
+        border-top: 8px solid #3498db;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear forwards; /* Set animation duration to 1 second */
+        z-index: 999;
+      }
+.warn{
+  padding-left: 30%;
+}
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 600px) {
+        /* Adjust styles for small screens */
+        main {
+          flex-direction: column; /* Stack elements vertically on small screens */
+          align-items: center;
+        }
+
+        form,
+        .printer-container {
+          flex-basis: 100%; /* Full width on small screens */
+          margin-left: 0; /* Remove margin on small screens */
+        }
+        .printer-container img.printer-icon {
+        max-height: 300px; /* Increased printer image size */
+      }
+      .warn{
+        font-size: 20px;
+        padding-left: 10%;
+      }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="loader"></div>
+
+    <header>
+      <img src="/images/canonlogo.png" alt="Company Logo" />
+    </header>
+
+    <main>
+      <form id="setupForm">
+        <label for="name">Name<span style="color: red">*</span>:</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Enter Your Name"
+          required
+        />
+
+        <label for="email">Email<span style="color: red">*</span>:</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Enter Your Email"
+          required
+        />
+
+        <label for="phone"
+          >Phone Number<span style="color: red">*</span>:</label
+        >
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="Enter Your Phone Number"
+          required
+        />
+
+        <label for="printerModel"
+          >Printer Model<span style="color: red">*</span>:</label
+        >
+        <input
+          type="text"
+          id="printerModel"
+          name="printerModel"
+          placeholder="Ex: pixma TR150"
+          required
+        />
+
+        <button type="button" onclick="startSetup()">Start Setup</button>
+      </form>
+
+      <div class="printer-container">
+        <img class="printer-icon" src="/images/printer2.jpg" alt="Printer Icon" />
+      </div>
+    </main>
+    <h2 class="warn">ENTER THE DETAILS TO INITIATE THE INSTALLATION</h2>
+    <footer>&copy; Canon 2024. All Rights Reserved.</footer>
+
+    <script>
+      function startSetup() {
+        // Display loader
+        document.getElementById("loader").style.display = "block";
+
+        // Simulate setup process delay (1 second in this example)
+        setTimeout(function () {
+          // Hide loader
+          document.getElementById("loader").style.display = "none";
+
+          // Get form data
+          const formData = {
+            name: document.getElementById("name").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            printerModel: document.getElementById("printerModel").value,
+          };
+
+          // Simulate sending data to backend (replace with actual API call)
+          console.log("Form data submitted:", formData);
+
+          // Redirect to next page
+          window.location.href = "/components/install.html";
+        }, 1000); // 1000 milliseconds = 1 second
+      }
+    </script>
+  </body>
+</html>

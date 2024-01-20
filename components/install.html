@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Printer Setup</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+
+      header {
+        background-color: #dee8ef;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px;
+        color: #fff;
+      }
+
+      header img {
+        max-height: 60px;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        padding: 20px;
+        flex-grow: 1;
+      }
+
+      section {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      section h2 {
+        color: #657989;
+      }
+
+      section p {
+        color: #555;
+      }
+
+      .downloads {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      .download-button {
+        background-color: #4caf50; /* Green color for buttons */
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-decoration: none;
+        margin-bottom: 20px; /* Increased margin around the buttons */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .download-button img {
+        max-width: 50px;
+        margin-bottom: 10px;
+      }
+
+      footer {
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        padding: 10px;
+      }
+
+      @media (min-width: 768px) {
+        /* Responsive styles for screens wider than 768px */
+        main {
+          flex-direction: row;
+        }
+
+        section {
+          flex-basis: calc(50% - 10px);
+          margin-right: 10px;
+        }
+
+        .downloads {
+          flex-direction: row;
+        }
+
+        .download-button {
+          margin-right: 20px; /* Increased margin around the buttons on larger screens */
+          margin-bottom: 0; /* Reset margin for better alignment */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="/images/canonlogo.png" alt="Company Logo" />
+    </header>
+
+    <main>
+      <section>
+        <h2>Setup on Windows</h2>
+        <p>Follow these steps to set up your printer on a Windows computer.</p>
+        <ol>
+          <li>Step 1: Connect the printer to your computer.</li>
+          <li>Step 2: Install the printer driver software.</li>
+          <li>Step 3: Complete the setup process.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Setup on Mac</h2>
+        <p>Follow these steps to set up your printer on a Mac computer.</p>
+        <ol>
+          <li>Step 1: Connect the printer to your Mac.</li>
+          <li>Step 2: Install the printer driver software.</li>
+          <li>Step 3: Complete the setup process.</li>
+        </ol>
+      </section>
+    </main>
+
+    <section>
+      <h2>Download Printer Software</h2>
+      <div class="downloads">
+        <a class="download-button" href="#" onclick="startDownload('Windows')">
+          <img src="/images/window1.png" alt="Windows Icon" />
+          Download for Windows
+        </a>
+        <a class="download-button" href="#" onclick="startDownload('Mac')">
+          <img src="/images/mac.png" alt="Mac Icon" />
+          Download for Mac
+        </a>
+        <a class="download-button" href="#" onclick="startDownload('Linux')">
+          <img src="/images/linux.png" alt="Linux Icon" />
+          Download for Linux
+        </a>
+      </div>
+    </section>
+
+    <footer>&copy; Canon 2024. All Rights Reserved.</footer>
+
+    <script>
+      function startDownload(platform) {
+        // Implement actual download logic here
+        alert(`Starting download for ${platform}`);
+        // Redirect to another HTML page (replace 'newpage.html' with your actual page)
+        window.location.href = "/components/error.html";
+      }
+    </script>
+  </body>
+</html>
